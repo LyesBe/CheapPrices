@@ -1,4 +1,4 @@
-﻿cheapPrinces.service('users', [
+﻿angular.module("cheapPrices" , []).service('users', [
     'fakeHttp' , '$location', function($http , $location) {
         this.authenticated = false;
         var users = this;

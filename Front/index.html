@@ -16,17 +16,26 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular/angular-route.min.js"></script>
     <script src="app.js"></script>
-    <script src="routes.js"></script>
-    <script src="Login/loginController.js"></script>
-    <script src="Users/usersService.js"></script>
-    <script src="FakeServices/fakeHttpService.js"></script>
-    <script src="FakeServices/fakeProductsService.js"></script>
-    <script src="FirstPage/firstPageController.js"></script>
-    <script src="FirstPage/firstPageService.js"></script>
-    <script src="Panier/PanierService.js"></script>
+    <script src="app.config.js"></script>
+    <script src="products/products.component.js"></script>
+    <script src="core/fake-products-service/fake-products-service.js"></script>
+    <script src="core/panier/panier.js"></script>
+    <script src="core/fake-connexion/fake-connexion.js"></script>
+    <script src="nav-bar/nav-bar.component.js"></script>
+    <script src="login/login.component.js"></script>
+    <script src="SignIn/signin.component.js"></script>
+    <!--
+
+
+    <script src="core/list-products/list-products.js"></script>
+
+
+    <script src="users/user.js"></script>-->
 </head>
 <body>
+
     <div ng-app="cheapPrices">
+        <navigation></navigation>
         <div ng-view></div>
     </div>
 </body>

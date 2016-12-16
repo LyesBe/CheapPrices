@@ -19,7 +19,7 @@
                         <td class="success" ng-bind="product.img"></td>
                         <td class="warning">{{product.name}}</td>
                         <td class="danger">{{product.price}}</td>
-                        <td class="info"><button class="btn btn-warning" ng-click="addToPanier(product); total()">Ajouter au panier</button></td>
+                        <td class="info"><button class="btn btn-warning" ng-click="addToPanier(product);">Ajouter au panier</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <th>Total</th>
-                        <td>{{total()}}</td>
+                        <td>{{total}}</td>
                     </tr>
                     <tr>
                         <td><button class="btn btn-success">Payer</button></td>

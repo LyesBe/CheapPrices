@@ -1,7 +1,7 @@
 /**
  * Created by Massil on 11/12/2016.
  */
-cheapPrinces.service("panier" , [function(){
+angular.module("panier" , []).service("cpPanier" , [function(){
     var panier = [];
 
     this.addToPanier = function(product){

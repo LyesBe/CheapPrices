@@ -1,21 +1,18 @@
 /**
  * Created by Massil on 11/12/2016.
  */
-cheapPrinces.service("fakeProducts" , function($q)
+angular.module("fakeProducts",[]).service("cpFakeProducts" , function($q)
 {
-    console.log("coucou");
-    this.get = function(url)
+
+    this.getAllProducts = function()
     {
         var deferred = $q.defer();
-        if(url == apiBaseUrl + "/products")
-        {
-            deferred.resolve({data : getProducts()});
-        }
+        deferred.resolve({data : listProducts()});
         return deferred.promise;
     }
 });
 
-function getProducts()
+function listProducts()
 {
 
     return [

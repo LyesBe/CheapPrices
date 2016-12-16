@@ -1,4 +1,4 @@
-﻿cheapPrinces.service("fakeHttp", function($q) {
+﻿cheapPrinces.service("cpFakeHttp", function($q) {
     this.get = function(url) {
 
     };
