@@ -1,0 +1,53 @@
+﻿<!-- On rows -->
+<div class="container">
+    <div class="row">
+        <div>
+            <table class="table table-condensed">
+                <thread>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <!--<th>Ajouter au panier</th>-->
+                    </tr>
+                </thread>
+                <!-- On cells (`td` or `th`) -->
+                <tbody>
+                    <tr ng-repeat="product in products">
+                        <td class="active">1</td>
+                        <td class="success" ng-bind="product.img"></td>
+                        <td class="warning">{{product.name}}</td>
+                        <td class="danger">{{product.price}}</td>
+                        <td class="info"><button class="btn btn-warning" ng-click="addToPanier(product); total()">Ajouter au panier</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="panier">
+            <table class="table table-condensed" id="">
+                <thread>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr ng-repeat="element in panier">
+                        <td class="active">{{element.name}}</td>
+                        <td class="active">{{element.price}}</td>
+                        <td class="active">{{element.number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{total()}}</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-success">Payer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

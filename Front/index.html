@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cheap Prices</title>
+    <meta charset="utf-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="routes.js"></script>
+    <script src="Login/loginController.js"></script>
+    <script src="Users/usersService.js"></script>
+    <script src="FakeServices/fakeHttpService.js"></script>
+    <script src="FakeServices/fakeProductsService.js"></script>
+    <script src="FirstPage/firstPageController.js"></script>
+    <script src="FirstPage/firstPageService.js"></script>
+    <script src="Panier/PanierService.js"></script>
+</head>
+<body>
+    <div ng-app="cheapPrices">
+        <div ng-view></div>
+    </div>
+</body>
+</html>
