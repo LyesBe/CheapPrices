@@ -5,11 +5,22 @@ angular.module("panier" , []).service("cpPanier" , [function(){
     var panier = [];
 
     this.addToPanier = function(product){
-        panier.push({
-            'name' : product.name,
-            'price' : product.price,
-            'number' : 1
+        var found = false;
+        angular.forEach(panier , function(value , key)
+        {
+            if(value.name == product.name)
+            {
+                value.number++;
+                found = true;
+            }
         });
+        if(found == false) {
+            panier.push({
+                'name': product.name,
+                'price': product.price,
+                'number': 1
+            });
+        }
     };
 
     this.getPanier = function()
@@ -23,7 +34,7 @@ angular.module("panier" , []).service("cpPanier" , [function(){
         var total = 0;
         angular.forEach(panier , function(key , value)
         {
-            total+=key.price;
+            total+= key.price * key.number;
         } , log);
         return total;
     }

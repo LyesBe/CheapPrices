@@ -22,8 +22,7 @@ angular.module("products" , ['ngRoute']).component("cpProducts" ,{
         $scope.addToPanier = function(product)
         {
             cpPanier.addToPanier(product);
+            $scope.total = cpPanier.total();
         };
-
-        $scope.total = cpPanier.total();
     }]
 });
