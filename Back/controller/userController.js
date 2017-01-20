@@ -5,15 +5,17 @@ var router = require('express').Router();
 var bodyParser = require('body-parser');
 var hash = require('bcrypt-nodejs');
 
-var user = require('./../model/user');
+var User = require('./../model/user');
 
-var parser = bodyParser.urlencoded({extended : false});
+//var parser = bodyParser.urlencoded({extended : false});
 
-router.get('/' ,parser , function(req , res){
+router.use(bodyParser.json());
+
+router.post('/'  , function(req , res){
     var email = req.body.email;
     var password = req.body.password;
 
-    user
+    User
         .find({
         email : email
         })
@@ -22,16 +24,44 @@ router.get('/' ,parser , function(req , res){
                 console.log(err);
             }
             else{
-                if(hash.compareSync(password , data.password)){
+                if(hash.compareSync(password , data[0].password)) {
                     console.log(data);
-                    res.writeHeader(100)
+                    res.send({status : true , profile : data});
+                    res.end();
                 }
             }
-        })
+        });
 });
 
-router.post('/' , parser , function(req , res){
+router.put('/' , function(req , res){
+    console.log(req.body);
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var email = req.body.email;
+    var password = req.body.password;
+    var address = req.body.address;
+    var address2 = req.body.address2;
+    var postCode = req.body.postCode;
+    var town = req.body.town;
+    var phone = req.body.phone;
+    var country = req.body.country;
 
+    var user = User({
+        firstname : firstname,
+        lastname : lastname,
+        email : email,
+        password : hash.hashSync(password),
+        address : address,
+        address2 : address2,
+        postCode : postCode,
+        town : town,
+        phone : phone,
+        country : country
+    });
+
+    user.save();
+    res.send(JSON.stringify({status : true}));
+    res.end();
 });
 
 module.exports = router;
