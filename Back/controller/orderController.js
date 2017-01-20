@@ -10,12 +10,11 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 router.use(bodyParser.json());
 
-router.get('/:reference', function(req , res){
-    Product.find({reference: req.params.reference}).exec(function(err, product) {
-        console.log(product)
-        console.log(req.params.reference)
+router.get('/:id', function(req , res){
+    Order.find(req.params.id).exec(function(err, order) {
+
         res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(product));
+        res.send(order[0]);
         res.end();
     });
 });
@@ -23,43 +22,44 @@ router.get('/:reference', function(req , res){
 router.post('/', function(req , res){
 
     var productRefs = req.body.products;
-    //console.log(productRefs);
+    var date = new Date();
+
+    console.log(date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
     order = Order({
         products: [],
         total: 0,
-        date: "2012-12-12 12:12:12",
+        date: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
         user: {}
     });
 
-    productRefs.forEach(function(ref, key){
-        Product.find({reference: ref.ref}).exec(function(err, product) {
-            order.products.push(new ObjectId(product._id));
-            order.save();
+    User.find(req.body.user).exec(function(err, user){
+        order.user = user[0]._id;
+
+        order.save(function(){
+            productRefs.forEach(function(ref, key){
+                Product.find({reference: ref.ref}).exec(function(err, product) {
+                    order.products.push(product[0].id);
+                    order.total += product[0].price;
+                    order.save();
+
+                    if((key+1) == productRefs.length){
+                        console.log(order);
+
+                        var response = {
+                            status: "true",
+                            order: order
+                        };
+
+                        res.setHeader('Content-Type', 'application/json');
+                        res.send(response);
+                        res.end();
+                    }
+                });
+            });
         });
+
     });
-
-    /*var name = req.body.name;
-    var description = req.body.description;
-    var price = req.body.price;
-    var reference = Math.random().toString(36).substring(7);
-    var stock = req.body.stock;
-
-    var order = Order({
-        name: name,
-        description: description,
-        price: price,
-        reference: reference,
-        stock: stock
-    }).save();*/
-
-    var response = {
-        status: "true"
-    };
-
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(order));
-    res.end();
 });
 
 module.exports = router;
