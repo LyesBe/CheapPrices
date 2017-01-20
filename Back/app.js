@@ -1,9 +1,15 @@
 /**
  * Created by Massil on 10/12/2016.
  */
-var printMessage = function ()
-{
-    console.log("coucou");
-};
+var express = require('express');
+var app = express();
 
-printMessage();
+global.comments = [];
+
+app.use('/public', express.static(__dirname + '/public'));
+
+app.use('/', require('./controllers'));
+
+app.listen(1337, function() {
+    console.log('App running');
+});
