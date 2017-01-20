@@ -8,7 +8,7 @@ global.comments = [];
 
 app.use('/public', express.static(__dirname + '/public'));
 
-app.use('/', require('./controllers'));
+app.use('/', require('./controller'));
 
 app.listen(1337, function() {
     console.log('App running');
