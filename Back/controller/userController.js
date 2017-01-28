@@ -12,6 +12,7 @@ var User = require('./../model/user');
 router.use(bodyParser.json());
 
 router.post('/'  , function(req , res){
+    console.log(req.body);
     var email = req.body.email;
     var password = req.body.password;
 

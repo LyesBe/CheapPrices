@@ -8,8 +8,9 @@ var app = angular.module("cheapPrices", [
     'fakeConnexion'         ,
     'login'                 ,
     'signin'                ,
-    'navBar'
+    'navBar'                ,
+    'userService'
 ]);
 
-var apiBaseUrl = "http://localhost/api";
+var apiBaseUrl = "http://localhost:1337";
 

@@ -4,19 +4,28 @@
 angular.module("login" , []).component("cpLogin",
     {
         templateUrl : "login/login.html",
-        controller : ['$scope' ,'users', function($scope  , users) {
-            $scope.loginAction = function() {
-                var promise = users.loginUsers($scope.email, $scope.email);
+        controller : ['$scope' , 'user' ,function($scope , user ) {
+            $scope.connect = function() {
+                console.log('connect');
+                var promise = user.connect($scope.email, $scope.password);
+                console.log(promise);
                 promise.then(function(response) {
-                    alert("Vous �tes connect�s! " + $scope.email + " " + $scope.password);
+                    if(response.data.status)
+                    {
+                        alert("Vous étes connectés! ");
+                    }
+                    else
+                    {
+                        alert("Vous étes connectés! ");
+                    }
                 }, function(error) {
                     alert("Une erreur s'est produite!");
                 });
             };
 
-            $scope.signinAction = function() {
+            /*$scope.signinAction = function() {
                 $location.path("/signin");
-            }
+            }*/
         }]
     }
 );
