@@ -26,11 +26,11 @@ router.get('/:reference', function(req , res){
 });
 
 router.post('/', function(req , res){
-    var name = req.body.name;
-    var description = req.body.description;
-    var price = req.body.price;
+    var name = req.body.product.name;
+    var description = req.body.product.description;
+    var price = req.body.product.price;
     var reference = Math.random().toString(36).substring(7);
-    var stock = req.body.stock;
+    var stock = req.body.product.stock;
 
     var product = Product({
         name: name,

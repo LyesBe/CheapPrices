@@ -3,7 +3,7 @@
  */
 angular.module("products" , ['ngRoute']).component("cpProducts" ,{
     templateUrl : "products/products.html" ,
-    controller : ['$scope' ,'cpFakeProducts' , 'cpPanier', function($scope , $http , cpPanier)
+    controller : ['$scope' ,'productService' , 'cpPanier', function($scope , $http , cpPanier)
     {
         var promise = $http.getAllProducts();
         $scope.products = [];

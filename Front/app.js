@@ -3,9 +3,8 @@
 var app = angular.module("cheapPrices", [
     "ngRoute"               ,
     "products"              ,
-    'fakeProducts'          ,
     'panier'                ,
-    'fakeConnexion'         ,
+    'product'               ,
     'login'                 ,
     'signin'                ,
     'navBar'                ,
