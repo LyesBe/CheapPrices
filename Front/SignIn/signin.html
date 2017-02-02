@@ -1,23 +1,23 @@
-﻿<form class="form-inline">
+﻿<form class="form-inline form" ng-submit="inscrire(firstname, lastname, username, birth, email, password, confimPassword)">
 
     <div class="form-group">
         <label for="inputFirstname" >Firstname: </label>
-        <input type="date" class="form-control" id="inputFirstname" ng-model="birth">
+        <input type="text" class="form-control" id="inputFirstname" ng-model="firstname">
     </div>
     <br>
     <div class="form-group">
         <label for="inputLastname">Lastname : </label>
-        <input type="date" class="form-control" id="inputLastname" ng-model="birth">
+        <input type="text" class="form-control" id="inputLastname" ng-model="lastname">
     </div>
     <br>
     <div class="form-group">
         <label for="inputNickname">Nickname: </label>
-        <input type="date" class="form-control" id="inputNickname" ng-model="birth">
+        <input type="text" class="form-control" id="inputNickname" ng-model="username">
     </div>
     <br>
     <div class="form-group">
         <label for="inputBirthDate">Birth Date</label>
-        <input type="date" class="form-control" id="inputBirthDate" ng-model="birth">
+        <input type="text" class="form-control" id="inputBirthDate" ng-model="birth">
     </div>
     <br>
     <div class="form-group">
@@ -27,14 +27,14 @@
     <br>
     <div class="form-group">
         <label for="inputPassword">Password: </label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="password">
+        <input type="password" class="form-control" id="inputPassword" ng-model="password">
     </div>
     <br>
     <div class="form-group">
         <label for="inputConfirmPassword">Confirm Password: </label>
-        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Password" ng-model="confirmPassword">
+        <input type="password" class="form-control" id="inputConfirmPassword" ng-model="confirmPassword">
     </div>
     <br>
 
-    <button type="submit" class="btn btn-default">Confirm identity</button>
+    <button type="submit" class="btn btn-success">Enregistrer</button>
 </form>

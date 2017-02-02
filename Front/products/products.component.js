@@ -1,10 +1,11 @@
 /**
  * Created by Massil on 16/12/2016.
  */
-angular.module("products" , ['ngRoute']).component("cpProducts" ,{
+angular.module("products" , ['ngRoute', 'ngCookies']).component("cpProducts" ,{
     templateUrl : "products/products.html" ,
-    controller : ['$scope', 'cpFakeProducts', 'cpPanier', function($scope, $http, cpPanier)
+    controller : ['$scope', 'productService', 'cpPanier', '$cookies', function($scope, $http, cpPanier, $cookies)
     {
+
         var promise = $http.getAllProducts();
         $scope.products = [];
         promise.then(function(response)

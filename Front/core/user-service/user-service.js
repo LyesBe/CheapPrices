@@ -12,6 +12,8 @@ angular.module('userService' , [])
     };
 
     this.inscrire = function(user){
+
+        console.log(apiBaseUrl+'/user');
         var promise = $http
             .put(apiBaseUrl+'/user' , {data : user});
         return promise;

@@ -18,8 +18,8 @@ router.get('/', function(req , res){
 
 router.get('/:reference', function(req , res){
     Product.find({reference: req.params.reference}).exec(function(err, product) {
-        console.log(product);
-        console.log(req.params.reference);
+        //console.log(product);
+        //console.log(req.params.reference);
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(product));
         res.end();

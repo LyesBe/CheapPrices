@@ -4,28 +4,54 @@
 angular.module("login" , []).component("cpLogin",
     {
         templateUrl : "login/login.html",
-        controller : ['$scope' , 'user' ,function($scope , user ) {
+        controller : ['$scope' , 'user', '$window', '$cookies' ,function($scope , user, $window, $cookies) {
+            if($cookies.get("logged")){
+                $window.location.href = 'index.html';
+            }
+
+            $scope.error = "";
+            $scope.loginErrorHide = true;
+
             $scope.connect = function() {
-                console.log('connect');
                 var promise = user.connect($scope.email, $scope.password);
-                console.log(promise);
+
                 promise.then(function(response) {
+
                     if(response.data.status)
                     {
-                        alert("Vous étes connectés! ");
+                        $cookies.put('logged', true);
+                        $cookies.put('email', response.data.user.email);
+                        $cookies.put('firstname', response.data.user.firstname);
+                        $cookies.put('lastname', response.data.user.lastname);
+
+                        $window.location.href = 'index.html';
                     }
                     else
                     {
-                        alert("Vous étes connectés! ");
+                        $scope.loginError = "Identifiants incorrects";
+                        $scope.loginErrorHide = false;
                     }
                 }, function(error) {
-                    alert("Une erreur s'est produite!");
+                    $scope.loginError = "Erreur de connexion";
+                    $scope.loginErrorHide = false;
                 });
             };
 
             /*$scope.signinAction = function() {
                 $location.path("/signin");
             }*/
+        }]
+    }
+);
+
+angular.module("logout" , []).component("cpLogout",
+    {
+        controller : ['$window', '$cookies' ,function($window, $cookies) {
+            if($cookies.get("logged")){
+                $cookies.remove("logged")
+            }
+
+            $window.location.href = 'index.html';
         }]
     }
 );

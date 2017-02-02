@@ -24,7 +24,7 @@ router.post('/', function(req , res){
     var productRefs = req.body.products;
     var date = new Date();
 
-    console.log(date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+    //console.log(date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
     order = Order({
         products: [],
@@ -44,7 +44,7 @@ router.post('/', function(req , res){
                     order.save();
 
                     if((key+1) == productRefs.length){
-                        console.log(order);
+                        //console.log(order);
 
                         var response = {
                             status: "true",
