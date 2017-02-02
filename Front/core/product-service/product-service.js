@@ -16,4 +16,11 @@ angular.module('product' , [])
             .post(apiBaseUrl + '/product' , {product : product});
         return promise;
     }
+
+    this.getProduct = function(id)
+    {
+        var promise =
+            $http.get(apiBaseUrl + '/product/'+id);
+        return promise;
+    }
 });

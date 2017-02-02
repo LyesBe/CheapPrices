@@ -38,7 +38,7 @@ router.post('/', function(req , res){
 
         order.save(function(){
             productRefs.forEach(function(ref, key){
-                Product.find({reference: ref.ref}).exec(function(err, product) {
+                Product.findById(ref._id).exec(function(err, product) {
                     order.products.push(product[0].id);
                     order.total += product[0].price;
                     order.save();

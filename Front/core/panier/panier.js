@@ -16,6 +16,7 @@ angular.module("panier" , []).service("cpPanier" , [function(){
         });
         if(found == false) {
             panier.push({
+                'id' : product._id,
                 'name': product.name,
                 'price': product.price,
                 'number': 1
