@@ -25,8 +25,8 @@ angular.module("products" , ['ngRoute', 'ngCookies']).component("cpProducts" ,{
             $scope.total = cpPanier.total();
         };
 
-        $scope.submitPanier = function(){
-            console.log(cpPanier);
+        $scope.addOrder = function(){
+
         }
     }]
 });
