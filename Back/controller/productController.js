@@ -3,6 +3,7 @@
  */
 var router = require('express').Router();
 var bodyParser = require('body-parser');
+
 var Product = require('../model/product');
 
 router.use(bodyParser.json());
@@ -17,8 +18,8 @@ router.get('/', function(req , res){
 
 router.get('/:reference', function(req , res){
     Product.find({reference: req.params.reference}).exec(function(err, product) {
-        console.log(product)
-        console.log(req.params.reference)
+        console.log(product);
+        console.log(req.params.reference);
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(product));
         res.end();
@@ -29,7 +30,7 @@ router.post('/', function(req , res){
     var name = req.body.product.name;
     var description = req.body.product.description;
     var price = req.body.product.price;
-    var reference = Math.random().toString(36).substring(7);
+    var reference = req.body.product.reference;
     var stock = req.body.product.stock;
 
     var product = Product({
