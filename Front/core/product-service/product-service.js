@@ -2,11 +2,18 @@
  * Created by Massil on 02/02/2017.
  */
 angular.module('product' , [])
-.service('productService' , function ($q) {
+.service('productService' , function ($http) {
     this.getAllProducts = function()
     {
-        var defer = $q.defer();
+        var promise =$http
+            .get(apiBaseUrl + '/product');
+        return promise;
+    };
 
-        return defer.promise;
+    this.addProduct = function(product)
+    {
+        var promise = $http
+            .post(apiBaseUrl + '/product' , {product : product});
+        return promise;
     }
-})
+});
