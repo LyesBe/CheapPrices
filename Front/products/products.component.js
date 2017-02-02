@@ -3,14 +3,13 @@
  */
 angular.module("products" , ['ngRoute']).component("cpProducts" ,{
     templateUrl : "products/products.html" ,
-    controller : ['$scope' ,'productService' , 'cpPanier', function($scope , $http , cpPanier)
+    controller : ['$scope', 'productService', 'cpPanier', function($scope, product, cpPanier)
     {
-        var promise = $http.getAllProducts();
+        var promise = product.getAllProducts();
         $scope.products = [];
         promise.then(function(response)
         {
             $scope.products = response.data;
-            console.log($scope.products);
 
         } , function(error)
         {
@@ -24,5 +23,9 @@ angular.module("products" , ['ngRoute']).component("cpProducts" ,{
             cpPanier.addToPanier(product);
             $scope.total = cpPanier.total();
         };
+
+        $scope.addOrder = function(){
+
+        }
     }]
 });
