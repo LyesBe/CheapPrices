@@ -1,0 +1,78 @@
+
+
+{
+  "data": [
+    {
+      "name": "Robe Bleu",
+      "description": "Belle robe bleu neuve",
+      "price": 39.99,
+      "stock": 100,
+    },
+    {
+      "name": "Top Blanc",
+      "description": "Beau top neuf blanc",
+      "price": 24.99,
+      "stock": 100
+    },
+    {
+      "name": "Jean Slim Bleu",
+      "description": "Beau jean slim bleu",
+      "price": 55,
+      "stock": 100
+    },
+    {
+      "name": "Robe Noire",
+      "description": "Belle robe bleu neuve",
+      "price": 39.99,
+      "stock": 100
+    },
+    {
+      "name": "Top Noir",
+      "description": "Beau top neuf blanc",
+      "price": 24.99,
+      "stock": 100
+    },
+    {
+      "name": "Jean Slim Noir",
+      "description": "Beau jean slim bleu",
+      "price": 55,
+      "stock": 100
+    },
+    {
+      "name": "Robe Rouge",
+      "description": "Belle robe bleu neuve",
+      "price": 39.99,
+      "stock": 100
+    },
+    {
+      "name": "Top Rouge",
+      "description": "Beau top neuf blanc",
+      "price": 24.99,
+      "stock": 100
+    },
+    {
+      "name": "Jean Slim Rouge",
+      "description": "Beau jean slim bleu",
+      "price": 55,
+      "stock": 100
+    },
+    {
+      "name": "Robe Jaune",
+      "description": "Belle robe bleu neuve",
+      "price": 39.99,
+      "stock": 100
+    },
+    {
+      "name": "Top Jaune",
+      "description": "Beau top neuf blanc",
+      "price": 24.99,
+      "stock": 100
+    },
+    {
+      "name": "Jean Slim Jaune",
+      "description": "Beau jean slim bleu",
+      "price": 55,
+      "stock": 100
+    }
+  ]
+}
