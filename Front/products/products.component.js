@@ -10,7 +10,6 @@ angular.module("products" , ['ngRoute']).component("cpProducts" ,{
         promise.then(function(response)
         {
             $scope.products = response.data;
-            console.log($scope.products);
 
         } , function(error)
         {

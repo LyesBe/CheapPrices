@@ -1,5 +1,5 @@
 ﻿angular.module("cheapPrices").config(function($routeProvider) {
-    console.log("route");
+
     $routeProvider
         .when("/", {
             template:'<cp-products></cp-products>'

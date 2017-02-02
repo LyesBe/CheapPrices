@@ -2,7 +2,10 @@
 <div class="container">
     <div class="row">
         <div>
-            <table class="table table-condensed">
+            <input class="form-control narrow-input" placeholder="Search" ng-model="searchProducts">
+        </div>
+        <div>
+            <table class="table table-condensed" id="searchProductsResults">
                 <thread>
                     <tr>
                         <th>#</th>
@@ -14,7 +17,7 @@
                 </thread>
                 <!-- On cells (`td` or `th`) -->
                 <tbody>
-                    <tr ng-repeat="product in products">
+                    <tr ng-repeat="product in products | filter:searchProducts">
                         <td class="active">1</td>
                         <td class="success" ng-bind="product.img"></td>
                         <td class="warning">{{product.name}}</td>
