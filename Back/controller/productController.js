@@ -16,12 +16,12 @@ router.get('/', function(req , res){
     });
 });
 
-router.get('/:id', function(req , res){
+router.get('/:id', function(req , res) {
     Product
         .findById(req.params.id)
-        .exec(function(err, product) {
+        .exec(function (err, product) {
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify({data : product}));
+            res.send(JSON.stringify({data: product}));
             res.end();
         });
 });

@@ -1,5 +1,5 @@
-﻿<h1>Login Page</h1>
-<form name="loginForm" novalidate>
+﻿<form name="loginForm" class="form" novalidate>
+    <h1>Login Page</h1>
     <div class="form-group">
         <label for="exampleInputEmail1">Email</label>
         <input type="email" ng-minlength="6" class="form-control" id="exampleInputEmail1" placeholder="Email" name="emailInput" ng-model="email" required>
@@ -9,7 +9,14 @@
         <input type="password" ng-minlength="6" class="form-control" id="exampleInputPassword1" placeholder="Password" name="passwordInput" ng-model="password" required>
     </div>
 
-    <button type="submit" ng-click="connect()" class="btn btn-default">Log In</button>
-    <button type="submit" ng-click="signinAction()" class="btn btn-default">Sign In</button>
+    <div class="panel panel-danger" ng-hide="loginErrorHide">
+        <div class="panel-body bg-danger">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{ loginError }}
+        </div>
+    </div>
+
+    <button type="submit" ng-click="connect()" class="btn btn-success">Connexion</button><br><br>
+    <a href="#!/signin" class="btn btn-default">inscription</a>
 </form>
 

@@ -20,11 +20,10 @@ router.get('/:id', function(req , res){
 });
 
 router.post('/', function(req , res){
-
-    var productRefs = req.body.products;
+    var productId = req.body.products;
     var date = new Date();
 
-    console.log(date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+    //console.log(date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
     order = Order({
         products: [],
@@ -32,19 +31,23 @@ router.post('/', function(req , res){
         date: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
         user: {}
     });
-
-    User.find(req.body.user).exec(function(err, user){
-        order.user = user[0]._id;
-
+    if(req.body.user == undefined)
+    {
+        order.user = User({
+            firstname : 'no user',
+            lastname : 'no user',
+            email : 'no user',
+            username : 'no user'
+        });
         order.save(function(){
-            productRefs.forEach(function(ref, key){
-                Product.findById(ref._id).exec(function(err, product) {
-                    order.products.push(product[0].id);
-                    order.total += product[0].price;
+            productId.forEach(function(id, key){
+                Product.findById(id).exec(function(err, product) {
+                    order.products.push(product._id);
+                    order.total += product.price;
                     order.save();
 
-                    if((key+1) == productRefs.length){
-                        console.log(order);
+                    if((key+1) == productId.length){
+                        //console.log(order);
 
                         var response = {
                             status: "true",
@@ -58,8 +61,38 @@ router.post('/', function(req , res){
                 });
             });
         });
+    }
+    else
+    {
+        User.find(req.body.user).exec(function(err, user){
+            order.user = user[0]._id;
 
-    });
+            order.save(function(){
+                productId.forEach(function(id, key){
+                    Product.findById(id).exec(function(err, product) {
+                        order.products.push(product.id);
+                        order.total += product.price;
+                        order.save();
+
+                        if((key+1) == productId.length){
+                            //console.log(order);
+
+                            var response = {
+                                status: "true",
+                                order: order
+                            };
+
+                            res.setHeader('Content-Type', 'application/json');
+                            res.send(response);
+                            res.end();
+                        }
+                    });
+                });
+            });
+
+        });
+    }
+
 });
 
 module.exports = router;

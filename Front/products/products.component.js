@@ -1,10 +1,11 @@
 /**
  * Created by Massil on 16/12/2016.
  */
-angular.module("products" , ['ngRoute']).component("cpProducts" ,{
+angular.module("products" , ['ngRoute', 'ngCookies']).component("cpProducts" ,{
     templateUrl : "products/products.html" ,
-    controller : ['$scope', 'productService', 'orderService', 'cpPanier', function($scope, product, orderService, cpPanier)
+    controller : ['$scope', 'productService', 'orderService', 'cpPanier', '$cookies',function($scope, product, orderService, cpPanier, $cookies)
     {
+
         var promise = product.getAllProducts();
         $scope.products = [];
         promise.then(function(response)
@@ -19,27 +20,21 @@ angular.module("products" , ['ngRoute']).component("cpProducts" ,{
         $scope.panier = cpPanier.getPanier();
 
         $scope.order = function(){
-            var order = {
-             products :[],
-             total : $scope.total,
-             date : new Date(),
-             user : ""
-             };
-             var panier = cpPanier.getPanier();
-             panier.forEach(function(element){
-                 var promise = product.getProduct(element.id);
-                 promise.then(function(res){
-                     for(var i = 0 ; i < element.number ; i++)
-                     {
-                         console.log("I: " + i);
-                         order.products.push(res.data.data);
-                     }
-                 } , function(err){});
-
-             });
-             console.log(order);
-             var promise = orderService.addOrder(order);
-             promise.then();
+            var order = [];
+            var panier = cpPanier.getPanier();
+            angular.forEach(panier , function(value , key){
+                for(var i = 0 ; i < value.number ; i++)
+                {
+                    order.push(value.id);
+                }
+            });
+            var promise = orderService.addOrder(order);
+            promise.then(function(success){
+                console.log(success);
+                cpPanier.reset();
+            } , function(fail){
+                console.log(fail);
+            })
         };
 
         $scope.addToPanier = function(product)

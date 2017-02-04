@@ -6,6 +6,7 @@ var app = angular.module("cheapPrices", [
     'panier'                ,
     'product'               ,
     'login'                 ,
+    'logout'                 ,
     'signin'                ,
     'navBar'                ,
     'userService'           ,

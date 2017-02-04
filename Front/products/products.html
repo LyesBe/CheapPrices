@@ -4,31 +4,27 @@
         <div>
             <input class="form-control narrow-input" placeholder="Search" ng-model="searchProducts">
         </div>
-        <div>
-            <table class="table table-condensed" id="searchProductsResults">
+        <div >
+            <table class="table table-condensed" id="searchProductsResults" id="products">
                 <thread>
                     <tr>
-                        <th>#</th>
                         <th>Image</th>
                         <th>Produit</th>
                         <th>Prix</th>
-                        <!--<th>Ajouter au panier</th>-->
                     </tr>
                 </thread>
-                <!-- On cells (`td` or `th`) -->
                 <tbody>
                     <tr ng-repeat="product in products | filter:searchProducts">
-                        <td class="active">1</td>
-                        <td class="success" ng-bind="product.img"></td>
-                        <td class="warning">{{product.name}}</td>
-                        <td class="danger">{{product.price}}</td>
-                        <td class="info"><button class="btn btn-warning" ng-click="addToPanier(product);">Ajouter au panier</button></td>
+                        <td class=""><img class="img-responsive"  ng-src="{{product.reference}}" width="100" height="50"></td>
+                        <td class="">{{product.name}}</td>
+                        <td class="">{{product.price}}</td>
+                        <td class=""><button class="btn btn-warning" ng-click="addToPanier(product)">Ajouter au panier</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div id="panier">
-            <table class="table table-condensed" id="">
+            <table class="table table-condensed" >
                 <thread>
                     <tr>
                         <th>Nom</th>

@@ -7,6 +7,9 @@
         .when("/login" , {
             template : "<cp-login></cp-login>"
         })
+        .when("/logout" , {
+            template : "<cp-logout></cp-logout>"
+        })
         .when("/signin", {
             template : "<cp-signin></cp-signin>"
         })

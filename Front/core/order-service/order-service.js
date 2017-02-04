@@ -4,7 +4,7 @@ angular.module('order' , [])
         this.addOrder = function(order)
         {
             var promise = $http
-                .post(apiBaseUrl + '/order' , {order : order});
+                .post(apiBaseUrl + '/order' , {products : order});
             return promise;
         }
     });

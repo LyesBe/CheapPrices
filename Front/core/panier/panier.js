@@ -24,6 +24,10 @@ angular.module("panier" , []).service("cpPanier" , [function(){
         }
     };
 
+    this.reset = function(){
+        panier = [];
+    };
+
     this.getPanier = function()
     {
         return panier;

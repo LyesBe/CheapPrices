@@ -7,13 +7,8 @@ var user = db.Schema({
     firstname : 'String',
     lastname : 'String',
     email :'String',
-    password : 'String',
-    address : 'String',
-    address2 : 'String',
-    postCode : 'String',
-    town : 'String',
-    phone : 'String',
-    country : 'String'
+    username :'String',
+    password : 'String'
 });
 
 module.exports = db.model('User' , user);
